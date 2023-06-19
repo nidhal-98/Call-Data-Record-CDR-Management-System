@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -12,14 +13,14 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "/cdrs")
+@Table(name = "cdrs")
 public class CDR {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cdrId;
 
-    private Long callerNumber;
+    private String callerNumber;
     private String receiverNumber;
     private Integer duration;
     private LocalDateTime timestamp;
