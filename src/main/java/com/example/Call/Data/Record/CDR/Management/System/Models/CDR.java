@@ -17,9 +17,9 @@ public class CDR {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cdrId;
+    private Long id;
 
-    private String callerNumber;
+    private Long callerNumber;
     private String receiverNumber;
     private Integer duration;
     private LocalDateTime timestamp;
