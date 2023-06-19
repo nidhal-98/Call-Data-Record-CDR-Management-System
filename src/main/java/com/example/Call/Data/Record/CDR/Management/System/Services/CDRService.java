@@ -23,4 +23,8 @@ public class CDRService {
         return cdrRepository.findById(id).get();
     }
 
+    public List<CDR> searchCDRs(String callerNumber, LocalDateTime timestampFrom, LocalDateTime timestampTo) {
+        return cdrRepository.findByCallerNumberAndTimestampBetween(callerNumber, timestampFrom, timestampTo);
+    }
+
 }

@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface CDRRepository extends JpaRepository<CDR, Long> {
-
+    List<CDR> findByCallerNumberAndTimestampBetween(String callerNumber, LocalDateTime timestampFrom, LocalDateTime timestampTo);
 }
