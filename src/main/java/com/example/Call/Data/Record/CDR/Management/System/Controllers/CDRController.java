@@ -35,7 +35,7 @@ public class CDRController {
     @GetMapping("/search")
     public ResponseEntity<List<CdrResponse>> searchCDRs(
             @RequestParam("caller_number") String callerNumber,
-            @RequestParam("caller_number") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timestampFrom,
+            @RequestParam("timestamp_from") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timestampFrom,
             @RequestParam("timestamp_to") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timestampTo) {
         List<CDR> cdrs = cdrService.searchCDRs(callerNumber, timestampFrom, timestampTo);
         List<CdrResponse> cdrResponses = convertToCdrResponses(cdrs);
@@ -54,5 +54,20 @@ public class CDRController {
             ));
         }
         return cdrResponses;
+    }
+
+    @PutMapping("/update/{id}")
+    public String updateCDR(@PathVariable Long id, @RequestBody CDR updatedCdr){
+
+        CDR cdr = cdrService.getByID(id);
+
+        cdr.setCallerNumber(updatedCdr.getCallerNumber());
+        cdr.setReceiverNumber(updatedCdr.getReceiverNumber());
+        cdr.setDuration(updatedCdr.getDuration());
+        cdr.setTimestamp(updatedCdr.getTimestamp());
+
+        cdrService.save(cdr);
+
+        return "Updated Successfully";
     }
 }

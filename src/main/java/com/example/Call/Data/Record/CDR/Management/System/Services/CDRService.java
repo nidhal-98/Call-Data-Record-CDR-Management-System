@@ -19,12 +19,24 @@ public class CDRService {
         cdrRepository.save(cdr);
     }
 
+    public CDR getByID(Long id){
+        return cdrRepository.findById(id).get();
+    }
+
+    public List<CDR> getAllCDRs() {
+        return cdrRepository.findAll();
+    }
+
     public CDR getCDRByID(Long id){
         return cdrRepository.findById(id).get();
     }
 
     public List<CDR> searchCDRs(String callerNumber, LocalDateTime timestampFrom, LocalDateTime timestampTo) {
         return cdrRepository.findByCallerNumberAndTimestampBetween(callerNumber, timestampFrom, timestampTo);
+    }
+
+    public CDR save(CDR cdr){
+        return cdrRepository.save(cdr);
     }
 
 }

@@ -3,6 +3,8 @@ package com.example.Call.Data.Record.CDR.Management.System.Models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Setter
 @Getter
