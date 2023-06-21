@@ -4,13 +4,16 @@ import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
 import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import com.example.Call.Data.Record.CDR.Management.System.Requests.cdrRequest;
 import com.example.Call.Data.Record.CDR.Management.System.Responses.CdrResponse;
+import com.example.Call.Data.Record.CDR.Management.System.Services.AuthenticationService;
 import com.example.Call.Data.Record.CDR.Management.System.Services.CDRService;
 import com.example.Call.Data.Record.CDR.Management.System.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +28,22 @@ public class CDRController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    AuthenticationService authenticationService;
+
     @PostMapping("/upload")
-    public String registerCDR(@RequestBody cdrRequest cdrRequest){
-        CDR cdr = cdrRequest.ConvertToCDR();
+    public ResponseEntity<String> registerCDR(@RequestBody cdrRequest cdrRequest, HttpServletRequest request) {
+        String username = request.getHeader("username");
+        String password = request.getHeader("password");
         User user = userService.getLastAddedUser();
-        cdr.setUser(user);
-        cdrService.registerCDR(cdr);
-        return "User Added Successfully";
+        if (authenticationService.authenticate(username, password)) {
+            CDR cdr = cdrRequest.ConvertToCDR();
+            cdr.setUser(user);
+            cdrService.registerCDR(cdr);
+            return ResponseEntity.ok("User Added Successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
+        }
     }
 
     @GetMapping("/get/{id}")
