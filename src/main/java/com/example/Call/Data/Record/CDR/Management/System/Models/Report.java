@@ -18,7 +18,7 @@ public class Report {
     private Long cdrId;
 
     private String username;
-    private int totalCalls;
-    private int totalDuration;
-    private int averageDuration;
+    private Integer totalCalls;
+    private Integer totalDuration;
+    private Integer averageDuration;
 }
