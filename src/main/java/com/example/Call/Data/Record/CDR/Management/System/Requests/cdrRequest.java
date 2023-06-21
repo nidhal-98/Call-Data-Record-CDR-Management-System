@@ -1,6 +1,7 @@
 package com.example.Call.Data.Record.CDR.Management.System.Requests;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
+import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class cdrRequest {
     private Integer duration;
     private LocalDateTime timestamp;
 
+
     public CDR ConvertToCDR(){
         CDR cdr = new CDR();
 
@@ -29,7 +31,6 @@ public class cdrRequest {
         cdr.setReceiverNumber(this.getReceiverNumber());
         cdr.setDuration(this.getDuration());
         cdr.setTimestamp(this.getTimestamp());
-
         return cdr;
     }
 }

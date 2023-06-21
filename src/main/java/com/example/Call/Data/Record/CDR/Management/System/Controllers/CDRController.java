@@ -27,8 +27,16 @@ public class CDRController {
     }
 
     @GetMapping("/get/{id}")
-    public CDR getByID(@PathVariable("id") Long id){
-        return cdrService.getCDRByID(id);
+    public CdrResponse getByID(@PathVariable("id") Long id){
+        CDR cdr = cdrService.getCDRByID(id);
+        CdrResponse cdrResponse = new CdrResponse(
+                cdr.getCdrId(),
+                cdr.getCallerNumber(),
+                cdr.getReceiverNumber(),
+                cdr.getDuration(),
+                cdr.getTimestamp()
+        );
+        return cdrResponse;
     }
 
 
@@ -59,7 +67,7 @@ public class CDRController {
     @PutMapping("/update/{id}")
     public String updateCDR(@PathVariable Long id, @RequestBody CDR updatedCdr){
 
-        CDR cdr = cdrService.getByID(id);
+        CDR cdr = cdrService.getCDRByID(id);
 
         cdr.setCallerNumber(updatedCdr.getCallerNumber());
         cdr.setReceiverNumber(updatedCdr.getReceiverNumber());
@@ -70,4 +78,5 @@ public class CDRController {
 
         return "Updated Successfully";
     }
+
 }
