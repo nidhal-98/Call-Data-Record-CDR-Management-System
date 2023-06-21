@@ -22,4 +22,7 @@ public class User{
     private String username;
     private String password;
     private String email;
+
+    @OneToMany(mappedBy = "user")
+    List<CDR> cdrList;
 }

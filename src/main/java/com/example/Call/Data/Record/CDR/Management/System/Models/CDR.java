@@ -13,7 +13,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cdrs")
+@Table(name = "cdr")
 public class CDR {
 
     @Id
@@ -24,4 +24,8 @@ public class CDR {
     private String receiverNumber;
     private Integer duration;
     private LocalDateTime timestamp;
+
+    @ManyToOne
+    @JoinColumn(name = "username")
+    User user;
 }
