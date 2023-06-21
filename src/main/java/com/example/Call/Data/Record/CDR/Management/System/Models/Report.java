@@ -6,16 +6,9 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-@Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "reports")
 public class Report {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long cdrId;
 
     private String username;
     private Integer totalCalls;
