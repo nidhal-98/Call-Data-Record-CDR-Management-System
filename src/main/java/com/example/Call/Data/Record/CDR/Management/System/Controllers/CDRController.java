@@ -1,9 +1,11 @@
 package com.example.Call.Data.Record.CDR.Management.System.Controllers;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
+import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import com.example.Call.Data.Record.CDR.Management.System.Repositories.CDRRepository;
 import com.example.Call.Data.Record.CDR.Management.System.Responses.CdrResponse;
 import com.example.Call.Data.Record.CDR.Management.System.Services.CDRService;
+import com.example.Call.Data.Record.CDR.Management.System.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +22,13 @@ public class CDRController {
     @Autowired
     CDRService cdrService;
 
+    @Autowired
+    UserService userService;
+
     @PostMapping("/upload")
     public String registerCDR(@RequestBody CDR cdr){
+        User user = userService.getLastAddedUser();
+        cdr.setUser(user);
         cdrService.registerCDR(cdr);
         return "User Added Successfully";
     }
