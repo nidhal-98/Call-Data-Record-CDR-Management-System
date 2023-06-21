@@ -34,4 +34,15 @@ public class CDRService {
         return cdrRepository.save(cdr);
     }
 
+    public int getTotalDuration(String username, int month, int year) {
+        // Retrieve the CDRs for the specified user, month, and year
+        List<CDR> cdrs = cdrRepository.findByUserUsernameAndTimestampBetween(username, month, year);
+
+        // Calculate the total duration
+        int totalDuration = cdrs.stream().mapToInt(CDR::getDuration).sum();
+
+        // Return the total duration
+        return totalDuration;
+    }
+
 }
