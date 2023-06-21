@@ -2,8 +2,6 @@ package com.example.Call.Data.Record.CDR.Management.System.Controllers;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import com.example.Call.Data.Record.CDR.Management.System.Services.UserService;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

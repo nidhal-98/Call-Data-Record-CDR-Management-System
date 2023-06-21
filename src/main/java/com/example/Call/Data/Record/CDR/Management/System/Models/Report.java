@@ -2,7 +2,6 @@ package com.example.Call.Data.Record.CDR.Management.System.Models;
 
 import lombok.*;
 
-import javax.persistence.*;
 
 @Getter
 @Setter

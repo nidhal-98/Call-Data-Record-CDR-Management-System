@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 public class CdrResponse {
 
     private Long cdrId;
-
     private String callerNumber;
     private String receiverNumber;
     private Integer duration;

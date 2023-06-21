@@ -1,7 +1,6 @@
 package com.example.Call.Data.Record.CDR.Management.System.Requests;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
-import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

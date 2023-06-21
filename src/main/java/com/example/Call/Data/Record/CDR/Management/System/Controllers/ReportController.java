@@ -1,9 +1,7 @@
 package com.example.Call.Data.Record.CDR.Management.System.Controllers;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.Report;
-import com.example.Call.Data.Record.CDR.Management.System.Services.CDRService;
 import com.example.Call.Data.Record.CDR.Management.System.Services.ReportService;
-import com.example.Call.Data.Record.CDR.Management.System.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
