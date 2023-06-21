@@ -16,6 +16,6 @@ public class Analytics {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int averageDuration;
-    private int totalCalls;
+    private Integer averageDuration;
+    private Integer totalCalls;
 }
