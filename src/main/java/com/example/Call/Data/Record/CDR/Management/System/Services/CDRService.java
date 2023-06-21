@@ -1,6 +1,7 @@
 package com.example.Call.Data.Record.CDR.Management.System.Services;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
+import com.example.Call.Data.Record.CDR.Management.System.Models.User;
 import com.example.Call.Data.Record.CDR.Management.System.Repositories.CDRRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,6 @@ public class CDRService {
 
     public void registerCDR(CDR cdr){
         cdrRepository.save(cdr);
-    }
-
-    public CDR getByID(Long id){
-        return cdrRepository.findById(id).get();
     }
 
     public List<CDR> getAllCDRs() {
