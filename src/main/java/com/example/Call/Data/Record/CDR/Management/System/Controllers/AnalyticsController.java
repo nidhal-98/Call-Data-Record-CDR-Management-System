@@ -17,19 +17,11 @@ import java.util.List;
 public class AnalyticsController {
 
     @Autowired
-    CDRService cdrService;
+    AnalyticsService analyticsService;
+
+
     @GetMapping("/call_durations")
     public ResponseEntity<Analytics> getCallDurationsAnalytics() {
-        List<CDR> cdrss = cdrService.getAllCDRs(); // Retrieve all CDRs from the service
-        int totalCalls = cdrss.size(); // Calculate the total number of calls
-        int totalDuration = cdrss.stream().mapToInt(CDR::getDuration).sum(); // Calculate the total duration
-
-        int averageDuration = 0;
-        if (totalCalls > 0) {
-            averageDuration = totalDuration / totalCalls; // Calculate the average duration
-        }
-
-        Analytics response = new Analytics(1L, averageDuration, totalCalls);
-        return ResponseEntity.ok(response);
+        return analyticsService.getCallDurationsAnalytics();
     }
 }
