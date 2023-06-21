@@ -2,6 +2,7 @@ package com.example.Call.Data.Record.CDR.Management.System.Controllers;
 
 import com.example.Call.Data.Record.CDR.Management.System.Models.CDR;
 import com.example.Call.Data.Record.CDR.Management.System.Models.User;
+import com.example.Call.Data.Record.CDR.Management.System.Requests.cdrRequest;
 import com.example.Call.Data.Record.CDR.Management.System.Responses.CdrResponse;
 import com.example.Call.Data.Record.CDR.Management.System.Services.CDRService;
 import com.example.Call.Data.Record.CDR.Management.System.Services.UserService;
@@ -25,7 +26,8 @@ public class CDRController {
     UserService userService;
 
     @PostMapping("/upload")
-    public String registerCDR(@RequestBody CDR cdr){
+    public String registerCDR(@RequestBody cdrRequest cdrRequest){
+        CDR cdr = cdrRequest.ConvertToCDR();
         User user = userService.getLastAddedUser();
         cdr.setUser(user);
         cdrService.registerCDR(cdr);

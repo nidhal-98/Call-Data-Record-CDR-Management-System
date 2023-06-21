@@ -14,8 +14,8 @@ public class CDRService {
     @Autowired
     CDRRepository cdrRepository;
 
-    public void registerCDR(CDR cdr){
-        cdrRepository.save(cdr);
+    public CDR registerCDR(CDR cdr){
+        return cdrRepository.save(cdr);
     }
 
     public List<CDR> getAllCDRs() {
