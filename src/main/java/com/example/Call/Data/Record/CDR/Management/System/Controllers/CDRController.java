@@ -40,7 +40,7 @@ public class CDRController {
             CDR cdr = cdrRequest.ConvertToCDR();
             cdr.setUser(user);
             cdrService.registerCDR(cdr);
-            return ResponseEntity.ok("User Added Successfully");
+            return ResponseEntity.ok("CDR Added Successfully");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed");
         }
